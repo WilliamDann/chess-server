@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Chess-Server</title>
+
+    <!-- import jQuery for chessjs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- import chess.js -->
+    <script src="lib/chess.js"></script>
+
+    <!-- import chesboardjs -->
+    <script src="\lib\chessboard\js\chessboard-1.0.0.min.js"></script>
+    <link rel="stylesheet" href="lib/chessboard/css/chessboard-1.0.0.min.css">
+</head>
+
+<body>
+    <!-- Chess board element-->
+    <div id="myBoard" style="width: 400px"></div>
+
+    <!-- status elements -->
+    <label>Status:</label>
+    <div id="status"></div>
+
+    <label>FEN:</label>
+    <div id="fen"></div>
+
+    <label>PGN:</label>
+    <div id="pgn"></div>
+
+    <!-- run our js file -->
+    <script src="board.js"></script>
+</body>
