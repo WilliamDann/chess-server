@@ -30,8 +30,4 @@ for (let i = 0; i < args.length; i++) {
     }
 }
 
-// start server
-// exported for testing
-new UserResource().register(app);
-
-module.exports = app.listen(port, host, () => console.log("! Server running on " + port));
+app.listen(port, host, () => console.log("! Server running on " + port));
