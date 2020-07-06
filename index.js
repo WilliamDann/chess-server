@@ -1,8 +1,6 @@
 // CHESS SERVER
 //    To teach hahrrison programminm
 // index.js - This file starts the server
-
-
 var express = require('express')
 var bodyParser = require('body-parser');
 
@@ -29,5 +27,9 @@ for (let i = 0; i < args.length; i++) {
             break;
     }
 }
+
+// run our programmed routes
+// TODO implement better database
+require('./src/chessgame')(app, {});
 
 app.listen(port, host, () => console.log("! Server running on " + port));

@@ -73,7 +73,7 @@ function updateStatus () {
 
 var config = {
   draggable: true,
-  position: 'start',
+  position: 'start',    
   onDragStart: onDragStart,
   onDrop: onDrop,
   onSnapEnd: onSnapEnd
