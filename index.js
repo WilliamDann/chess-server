@@ -1,5 +1,5 @@
 // CHESS SERVER
-//    To teach hahrrison programminm
+//    To teach harrison programming
 // index.js - This file starts the server
 var express = require('express')
 var bodyParser = require('body-parser');
