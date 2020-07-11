@@ -32,6 +32,24 @@ module.exports = (app, database) => {
         }
     });
 
+    app.get('/api/chessgame' , (req, res)=> {
+        if(! req.query.gameID) {
+            res.status(404)
+            res.send('Not Avalible')
+            return 
+        }
+
+        var sendGame = database[ req.query.gameID ]
+        if(sendGame == undefined) {
+            res.status(404)
+            res.send('Game Invalid')
+            
+        } else {
+            res.send(sendGame)
+        }
+    
+    })
+
     // this route is used to make moves on the chessboard
     // TODO check if the move is legal
     app.post('/api/chessgame/move', (req, res) => {
