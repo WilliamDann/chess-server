@@ -18,8 +18,8 @@ module.exports = (app, database) => {
         // if the game does not have players,
         // send an error back
         if (!gamehasPlayers) {
-            req.status(400); // 400 = bad request
-            req.send("A 'whitePlayer' and 'blackPlayer' must be specified in request.");
+            res.status(400); // 400 = bad request
+            res.send("A 'whitePlayer' and 'blackPlayer' must be specified in request.");
         } else {
             // generate a random game id
             var randID = Math.random().toString(36).substr(2, 9);
