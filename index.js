@@ -28,9 +28,13 @@ for (let i = 0; i < args.length; i++) {
     }
 }
 
+let db = {};
+db.users = {};
+db.games = {};
+
 // run our programmed routes
 // TODO implement better database
-require('./src/chessgame')(app, {});
-require('./src/user')(app, {});
+require('./src/chessgame')(app, db);
+require('./src/user')(app, db);
 
 app.listen(port, host, () => console.log("! Server running on " + port));
