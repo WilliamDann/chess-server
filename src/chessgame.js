@@ -25,7 +25,7 @@ module.exports = (app, database) => {
             var randID = Math.random().toString(36).substr(2, 9);
 
             // store game in database at id
-            database[randID] = new ChessData(STARTING_POSITION, req.body['whitePlayer'], req.body['blackPlayer']);
+            database.games[randID] = new ChessData(STARTING_POSITION, req.body['whitePlayer'], req.body['blackPlayer']);
 
             // tell the user the ID of their new game
             res.send(randID);
@@ -39,7 +39,7 @@ module.exports = (app, database) => {
             return 
         }
 
-        var sendGame = database[ req.query.gameID ]
+        var sendGame = database.games[ req.query.gameID ]
         if(sendGame == undefined) {
             res.status(404)
             res.send('Game Invalid')
@@ -65,7 +65,7 @@ module.exports = (app, database) => {
         }
 
         // check if the game exists
-        if (!database[req.body['game']]) {
+        if (!database.games[req.body['game']]) {
             res.status(404); // 404 = not found
             return res.send("Game '" + req.body['game'] + "' was on found on the server.");
         }
@@ -76,12 +76,12 @@ module.exports = (app, database) => {
         // TODO ccheck if move is checkmate
 
         // make the move in memory
-        console.log(database[req.body['game']])
-        var chessGame = database[req.body['game']].getGame();
+        console.log(database.games[req.body['game']])
+        var chessGame = database.games[req.body['game']].getGame();
         chessGame.move(req.body['move']);
 
         // update the fen string stored
-        database[req.body['game']].fen = chessGame.fen();
+        database.games[req.body['game']].fen = chessGame.fen();
 
         // finish the session
         res.send("Move made");

@@ -20,14 +20,14 @@ module.exports = (app, database) => {
         }
 
         // if that user already exists, throw an error
-        if (database[req.body.username]) {
+        if (database.users[req.body.username]) {
             res.status(409); // conflict
             res.send("Username already exists");
             return;
         }
 
         // store user data
-        database[req.body.username] = new UserData(
+        database.users[req.body.username] = new UserData(
             req.body.username,
             md5(req.body.password), // password hashed with md5
             req.body.email
@@ -47,7 +47,7 @@ module.exports = (app, database) => {
         }
 
         // check if username exists in db
-        if (!database[req.query.username]) {
+        if (!database.users[req.query.username]) {
             res.status(404);
             res.send("User not found");
             return;
@@ -56,7 +56,7 @@ module.exports = (app, database) => {
         // send user data
 
         // copy user data & delete password
-        let dataCopy = Object.assign({}, database[req.query.username]);
+        let dataCopy = Object.assign({}, database.users[req.query.username]);
         delete dataCopy.passwordHash;
 
         // send passwordless data
